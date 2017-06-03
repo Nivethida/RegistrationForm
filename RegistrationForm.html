@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="RegistrationForm.css" rel="stylesheet" type="text/css">
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+          rel = "stylesheet">
+    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js'></script>
+
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+<h1>New Registration Page</h1>
+<div id="formDiv1">
+    <form name="registerForm">
+    Eamil ID:<input type="email" name="emailId" ng-model="user.emailM"
+                ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required>
+        <span ng-show="registerForm.emailId.$touched && registerForm.emailId.$error.required">Required!</span>
+        <span ng-show="registerForm.emailId.$error.email">Enter Proper Email ID</span>
+        <br>
+
+        Password:<input type="password" name="passId" ng-model="user.pass" ng-pattern="user.conPass" ng-minlength="6" required><br>
+        <span ng-show="registerForm.passId.$touched && registerForm.passId.$error.required">Required!</span>
+        <span ng-show="registerForm.passId.$touched && registerForm.passId.$error.minlength">Minimum of 6 letters</span>
+
+    Confirm Password:<input type="password" name="confirmPassId" ng-model="user.conPass" ng-pattern="user.pass" required><br>
+        <span ng-show="registerForm.confirmPassId.$touched && registerForm.confirmPassId.$error.required">Required!</span>
+        <span ng-show="registerForm.confirmPassId.$touched && registerForm.confirmPassId.$error.pattern">The password entered does not match!!</span>
+
+        First Name:<input type="text" name="firstName" ng-model="user.firstName" required><br>
+        Last Name:<input type="text" name="lastName" ng-model="user.lastName" required><br>
+
+
+        Date of Birth:<input type="date" name="dateOfBirth" ng-model="user.dateDob" required><br>
+        <span ng-show="registerForm.dateOfBirth.$touched && registerForm.dateOfBirth.$error.required">Required</span>
+        <div ng-if="actualAge() < 18"><p style="color: red">The age should be minimum 18!!</p></div>
+
+        <button href="#" id="clearButton" ng-click="resetForm()">
+           Clear
+        <span id="clearSpan"><i class="glyphicon glyphicon-refresh"></i></span>
+        </button>
+
+        <button href="#" id="submitId" ng-click="submitRequest()" ng-disabled="registerForm.$invalid">
+        Submit
+        <span id="submitSpan"><i class="glyphicon glyphicon-arrow-right"></i></span>
+        </button>
+    </form>
+</div>
+<div id="displayDiv" ng-show="results">
+
+<p>Full Name: {{fullName()}}</p>
+    <p>Email ID: {{user.emailM}}</p>
+    <p>Date of birth: {{user.dateDob | date}}</p>
+
+    <description-area></description-area>
+</div>
+<script src="RegistrationForm.js"></script>
+
+</body>
+</html>

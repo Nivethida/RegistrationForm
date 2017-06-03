@@ -1,0 +1,52 @@
+body{
+    background-color: darkgray ;
+}
+
+input{
+    background-color: white;
+    color: black;
+    margin-top: 15px;
+    margin-left: 20px;
+    width: 240px;
+    height: 30px;
+    display: block;
+}
+#formDiv1{
+    float: left;
+    padding-left: 15px;
+
+}
+label{
+    text-align: right;
+}
+button{
+    background-color: deepskyblue;
+    color: white;
+    border: 1px solid deepskyblue;
+    border-radius: 5px;
+    line-height: 40px;
+    padding: 10px;
+}
+#clearButton{
+    margin-left: 20px;
+}
+#submitId{
+   margin-left: 40px;
+}
+h1{
+    text-align: center;
+}
+#dob{
+    font-size:9pt !important
+}
+#displayDiv{
+    margin-left: 400px;
+
+}
+input.ng-touched.ng-invalid{
+    border-color: red;
+}
+#displayDiv{
+
+    float: left;
+}
